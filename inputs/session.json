@@ -1,0 +1,136 @@
+{
+  "origin": [
+    -1,
+    1
+  ],
+  "extent": [
+    -1,
+    1,
+    4,
+    4
+  ],
+  "fragments": [
+    {
+      "id": "left",
+      "camera": "L",
+      "rect": [
+        -1,
+        1,
+        2,
+        4
+      ],
+      "channels": 1,
+      "codes": [
+        20,
+        25,
+        30,
+        40,
+        41,
+        42,
+        44,
+        45,
+        46
+      ],
+      "scale": 0.08,
+      "zero": 18
+    },
+    {
+      "id": "right-up",
+      "camera": "R",
+      "rect": [
+        2,
+        1,
+        4,
+        2
+      ],
+      "channels": 1,
+      "codes": [
+        71,
+        83
+      ],
+      "scale": 0.05,
+      "zero": 70
+    },
+    {
+      "id": "right-down",
+      "camera": "R",
+      "rect": [
+        2,
+        2,
+        4,
+        4
+      ],
+      "channels": 1,
+      "codes": [
+        72,
+        73,
+        74,
+        75
+      ],
+      "scale": 0.05,
+      "zero": 70
+    }
+  ],
+  "profiles": [
+    {
+      "id": "depth",
+      "allow": [
+        "uniform"
+      ],
+      "scale": 0.1,
+      "zero": 128
+    },
+    {
+      "id": "diagnostic",
+      "allow": [
+        "uniform",
+        "source"
+      ],
+      "scale": 0.1,
+      "zero": 128
+    }
+  ],
+  "events": [
+    [
+      "fragment",
+      "left"
+    ],
+    [
+      "fragment",
+      "right-up"
+    ],
+    [
+      "read",
+      "diagnostic",
+      0,
+      0
+    ],
+    [
+      "read",
+      "depth",
+      1,
+      0
+    ],
+    [
+      "fragment",
+      "right-down"
+    ],
+    [
+      "accept",
+      "depth",
+      1,
+      0
+    ],
+    [
+      "reuse",
+      "left"
+    ],
+    [
+      "inverse",
+      "depth",
+      1,
+      0
+    ]
+  ],
+  "scratchBytes": 2048
+}
